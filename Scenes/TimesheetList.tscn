@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://brh6basdp5dpy"]
+
+[ext_resource type="Script" uid="uid://og6xj23yuww7" path="res://Scripts/TimesheetList.cs" id="1_isv4q"]
+[ext_resource type="Theme" uid="uid://mshuj7vu4s1i" path="res://Styles/Default/Default.tres" id="2_6hwsd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usvi7"]
+content_margin_top = 35.0
+content_margin_right = 4.0
+content_margin_bottom = 35.0
+bg_color = Color(1, 0.666667, 0.0235294, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_topcq"]
+content_margin_top = 35.0
+content_margin_right = 4.0
+content_margin_bottom = 35.0
+bg_color = Color(1, 0.666667, 0.0235294, 1)
+corner_detail = 5
+
+[node name="TimesheetList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_isv4q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+theme = ExtResource("2_6hwsd")
+theme_override_constants/outline_size = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_usvi7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_topcq")
+text = "Zurück"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="List" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 125
+
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="OnGoBack"]

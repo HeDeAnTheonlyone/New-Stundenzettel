@@ -1,0 +1,186 @@
+[gd_scene load_steps=8 format=3 uid="uid://dksy6ihewota4"]
+
+[ext_resource type="Script" uid="uid://c30jdqbl3tr01" path="res://Scripts/TimesheetEditor.cs" id="1_kcw6l"]
+[ext_resource type="Theme" uid="uid://mshuj7vu4s1i" path="res://Styles/Default/Default.tres" id="1_y62yx"]
+[ext_resource type="Theme" uid="uid://rctkldwupdbp" path="res://Styles/ArrowButton/ArrowButtonR.tres" id="3_dofgn"]
+[ext_resource type="Theme" uid="uid://edaf7s6wor0m" path="res://Styles/ArrowButton/ArrowButtonL.tres" id="3_ul0jy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y62yx"]
+content_margin_top = 35.0
+content_margin_right = 4.0
+content_margin_bottom = 35.0
+bg_color = Color(1, 0.666667, 0.0235294, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcw6l"]
+content_margin_top = 35.0
+content_margin_right = 4.0
+content_margin_bottom = 35.0
+bg_color = Color(1, 0.666667, 0.0235294, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ul0jy"]
+color = Color(1, 1, 1, 1)
+grow_begin = 25.0
+grow_end = 25.0
+thickness = 12
+
+[node name="Timesheet" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_kcw6l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+focus_mode = 0
+theme = ExtResource("1_y62yx")
+theme_override_constants/outline_size = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y62yx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kcw6l")
+text = "Zurück"
+
+[node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer1"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="FromDate" type="LineEdit" parent="VBoxContainer/MarginContainer1/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+focus_mode = 0
+theme = ExtResource("1_y62yx")
+placeholder_text = "von Datum"
+alignment = 1
+max_length = 10
+editable = false
+keep_editing_on_text_submit = true
+expand_to_text_length = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ul0jy")
+
+[node name="ToDate" type="LineEdit" parent="VBoxContainer/MarginContainer1/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+focus_mode = 0
+theme = ExtResource("1_y62yx")
+placeholder_text = "bis Datum"
+alignment = 1
+max_length = 10
+editable = false
+keep_editing_on_text_submit = true
+expand_to_text_length = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 100
+
+[node name="ButtonL" type="Button" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_ul0jy")
+
+[node name="WeekDay" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_y62yx")
+text = "Monday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonR" type="Button" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_dofgn")
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 130
+
+[node name="Hours" type="LineEdit" parent="VBoxContainer/MarginContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_y62yx")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Stunden"
+
+[node name="Location" type="LineEdit" parent="VBoxContainer/MarginContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("1_y62yx")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Ort"
+
+[node name="Manager" type="LineEdit" parent="VBoxContainer/MarginContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("1_y62yx")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Baustellenleitung"
+
+[node name="Km" type="LineEdit" parent="VBoxContainer/MarginContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("1_y62yx")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Km"
+
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="OnGoBack"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/ButtonL" to="." method="OnPreviousDay"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/ButtonR" to="." method="OnNextDay"]

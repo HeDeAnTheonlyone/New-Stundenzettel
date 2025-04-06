@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://dodo8jjcj6s2w"]
+
+[ext_resource type="Theme" uid="uid://mshuj7vu4s1i" path="res://Styles/Default/Default.tres" id="1_1smkq"]
+[ext_resource type="Script" uid="uid://bbdf0cjypce7d" path="res://Scripts/Menu.cs" id="1_6pedr"]
+[ext_resource type="Texture2D" uid="uid://bkdpfqvmha812" path="res://Assets/Logo.png" id="2_syfuq"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6pedr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("2_syfuq")
+expand_mode = 5
+
+[node name="New" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_1smkq")
+theme_override_font_sizes/font_size = 58
+text = "Dieser Woche"
+
+[node name="Load" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_1smkq")
+theme_override_font_sizes/font_size = 58
+text = "Liste"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_1smkq")
+theme_override_font_sizes/font_size = 58
+text = "Einstellungen"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("1_1smkq")
+theme_override_font_sizes/font_size = 58
+text = "Beenden"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/New" to="." method="OnNewPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Load" to="." method="OnLoadPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="OnSettingsPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="OnExitPressed"]

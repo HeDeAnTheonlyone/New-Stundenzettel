@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://by81j47g7o2ir"]
+
+[ext_resource type="Script" uid="uid://y3pn2h8yfba3" path="res://Scripts/SettingsMenu.cs" id="1_bxjf0"]
+[ext_resource type="Theme" uid="uid://mshuj7vu4s1i" path="res://Styles/Default/Default.tres" id="2_4hfd5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1nw0"]
+content_margin_top = 35.0
+content_margin_right = 4.0
+content_margin_bottom = 35.0
+bg_color = Color(1, 0.666667, 0.0235294, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjqtt"]
+content_margin_top = 35.0
+content_margin_right = 4.0
+content_margin_bottom = 35.0
+bg_color = Color(1, 0.666667, 0.0235294, 1)
+corner_detail = 5
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bxjf0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+theme = ExtResource("2_4hfd5")
+theme_override_constants/outline_size = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w1nw0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mjqtt")
+text = "Zurück"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 130
+
+[node name="User" type="LineEdit" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("2_4hfd5")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Name"
+
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="OnGoBack"]

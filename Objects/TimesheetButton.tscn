@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://vhf28xbhc6w4"]
+
+[ext_resource type="Script" uid="uid://bl5c2dj7utbhs" path="res://Scripts/TimesheetButton.cs" id="1_e7f6y"]
+[ext_resource type="Theme" uid="uid://mshuj7vu4s1i" path="res://Styles/Default/Default.tres" id="1_fhxja"]
+[ext_resource type="Texture2D" uid="uid://bwcucf70hvrc8" path="res://Assets/Send.svg" id="2_e7f6y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fch8v"]
+bg_color = Color(1, 0.666667, 0.0235294, 1)
+corner_detail = 5
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[node name="TimesheetButton" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("1_e7f6y")
+
+[node name="HBoxContainer" type="HSplitContainer" parent="."]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+split_offset = -200
+dragging_enabled = false
+dragger_visibility = 1
+
+[node name="Send" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_fhxja")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fch8v")
+icon = ExtResource("2_e7f6y")
+icon_alignment = 1
+
+[node name="Edit" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_fhxja")
+text = "ERROR"
+
+[connection signal="pressed" from="HBoxContainer/Edit" to="." method="OnEditPressed"]
