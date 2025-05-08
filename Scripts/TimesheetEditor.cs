@@ -55,7 +55,7 @@ public partial class TimesheetEditor : Control
             PdfGenerator.GeneratePdf(new Timesheet
             {
                 Entries = entries,
-                FomDate = DateOnly.Parse(fromDate.Text)
+                FromDate = DateOnly.Parse(fromDate.Text)
             });
         }
     }
@@ -73,8 +73,8 @@ public partial class TimesheetEditor : Control
 
         var data = JsonSerializer.Deserialize<Timesheet>(jsonString);
 
-        fromDate.Text = $"{data.FomDate:d}";
-        toDate.Text = $"{data.FomDate.AddDays(5):d}";
+        fromDate.Text = $"{data.FromDate:d}";
+        toDate.Text = $"{data.FromDate.AddDays(5):d}";
         entries = data.Entries;
 
         LoadInputs();
@@ -97,19 +97,25 @@ public partial class TimesheetEditor : Control
         var data = new Timesheet
         {
             Entries = entries,
-            FomDate = DateOnly.Parse(fromDate.Text)
+            FromDate = DateOnly.Parse(fromDate.Text)
         };
 
         PdfGenerator.GeneratePdf(data);
 
         var jsonString = JsonSerializer.Serialize(data);
-        var file = Godot.FileAccess.Open(Path.Join(timesheetDir, $"{data.FomDate:yyyy_MM_dd}.json"), Godot.FileAccess.ModeFlags.Write);
+        var file = Godot.FileAccess.Open(Path.Join(timesheetDir, $"{data.FromDate:yyyy_MM_dd}.json"), Godot.FileAccess.ModeFlags.Write);
         if (Godot.FileAccess.GetOpenError() != Error.Ok) return;
         file.StoreString(jsonString);
         file.Close();
     }
 
-    private void UpdateDayData() => entries[(byte)Day - 1] = entries[(byte)Day - 1] with { Hours = hours.Text, Location = location.Text, Manager = manager.Text, Km = km.Text };
+    private void UpdateDayData() => entries[(byte)Day - 1] = entries[(byte)Day - 1] with
+    {
+        Hours = hours.Text,
+        Location = location.Text,
+        Manager = manager.Text,
+        Km = km.Text
+    };
 
 
     private void LoadInputs()

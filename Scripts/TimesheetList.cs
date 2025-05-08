@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using Godot;
 
 public partial class TimesheetList : Control
@@ -10,7 +11,7 @@ public partial class TimesheetList : Control
     {
         list = GetNode<VBoxContainer>("%List");
 
-        var fileNames = GetSaveFileNames();
+        var fileNames = GetSaveFileNames().OrderDescending().ToArray();
         if (fileNames != null) PopulateList(fileNames);
     }
 

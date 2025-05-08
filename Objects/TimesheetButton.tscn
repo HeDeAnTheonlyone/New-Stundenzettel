@@ -48,4 +48,5 @@ size_flags_horizontal = 3
 theme = ExtResource("1_fhxja")
 text = "ERROR"
 
+[connection signal="pressed" from="HBoxContainer/Send" to="." method="OnSendPressed"]
 [connection signal="pressed" from="HBoxContainer/Edit" to="." method="OnEditPressed"]

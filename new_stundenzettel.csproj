@@ -5,6 +5,7 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.11.0" />
     <PackageReference Include="PDFsharp-MigraDoc" Version="6.2.0-preview-3" />
   </ItemGroup>
 </Project>

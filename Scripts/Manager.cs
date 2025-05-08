@@ -28,9 +28,6 @@ public partial class Manager : Node
         CreateDirectories();
         DownloadAssets();
         GlobalFontSettings.FontResolver = new CustomFontResolver();
-        
-        // GmailClient client = new();
-        // _ = client.AuthenticateAsync();
     }
 
     public override void _ExitTree() => GetWindow().GoBackRequested -= SceneBack;

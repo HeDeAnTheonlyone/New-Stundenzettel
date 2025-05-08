@@ -42,7 +42,13 @@ public partial class Settings: Node
 
     private void CreateSettings()
     {
-        UserSettings = new UserSettings{User = ""};
+        UserSettings = new UserSettings
+        {
+            User = "",
+            MailAddress = "",
+            AppPassword = "",
+            TargetAddress = ""
+        };
     }
 
     private void SaveSettings()

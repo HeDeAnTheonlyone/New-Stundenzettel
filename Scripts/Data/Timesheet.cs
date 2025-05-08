@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 public record Timesheet
 {
-    [JsonInclude] public DateOnly FomDate { get; init; }
+    [JsonInclude] public DateOnly FromDate { get; init; }
     [JsonInclude] public TimesheetEntry[] Entries { get; init; }
 }
 

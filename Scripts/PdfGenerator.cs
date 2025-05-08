@@ -7,7 +7,7 @@ using PdfSharp.Drawing;
 using Orientation = MigraDoc.DocumentObjectModel.Orientation;
 using VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment;
 
-public class PdfGenerator
+public static class PdfGenerator
 {
     public static void GeneratePdf(Timesheet timesheet)
     {
@@ -37,7 +37,7 @@ public class PdfGenerator
         var renderer = new PdfDocumentRenderer();
         renderer.Document = doc;
         renderer.RenderDocument();
-        renderer.Save(Path.Join(Manager.SaveDir, "stundenzettel", $"Arbeisbericht {Settings.UserSettings.User} [{timesheet.FomDate:d}-{timesheet.FomDate.AddDays(5):d}].pdf"));
+        renderer.Save(Path.Join(Manager.SaveDir, "stundenzettel", $"Arbeitsbericht {Settings.UserSettings.User} [{timesheet.FromDate:d}-{timesheet.FromDate.AddDays(5):d}].pdf"));
     }
 
     private static void CreateBackgroundImage(Section sec, WrapFormat wrapFmt)
@@ -63,8 +63,8 @@ public class PdfGenerator
         table.AddColumn(70);
 
         var row = table.AddRow();
-        row.Cells[0].AddParagraph($"{timesheet.FomDate:d}");
-        row.Cells[2].AddParagraph($"{timesheet.FomDate.AddDays(5):d}");
+        row.Cells[0].AddParagraph($"{timesheet.FromDate:d}");
+        row.Cells[2].AddParagraph($"{timesheet.FromDate.AddDays(5):d}");
     }
 
     private static void CreateName(Section sec, WrapFormat wrapFmt)

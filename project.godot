@@ -44,5 +44,6 @@ locale/translations=PackedStringArray("res://Translation/Translation.de.translat
 
 [rendering]
 
+renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.160784, 0.160784, 0.164706, 1)
